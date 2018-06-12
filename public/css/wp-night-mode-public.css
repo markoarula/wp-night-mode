@@ -1,0 +1,58 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.wp-night-mode-button {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 21px;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 0;
+    top: 2px;
+}
+
+.wp-night-mode-slider.round {
+    border-radius: 34px;
+}
+
+.wp-night-mode-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.wp-night-mode-slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.wp-night-mode-slider.round:before {
+    border-radius: 50%;
+}
+
+/*Active*/
+.wp-night-mode-button.active .wp-night-mode-slider {
+    background-color: #2196F3;
+}
+
+.wp-night-mode-button.active .wp-night-mode-slider:before {
+    -webkit-transform: translateX(16px);
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
