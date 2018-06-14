@@ -59,7 +59,7 @@ class Wp_Night_Mode_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function wp_night_mode_enqueue_styles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -82,7 +82,7 @@ class Wp_Night_Mode_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function wp_night_mode_enqueue_scripts() {
 
 		/**
 		 * This function is provided for demonstration purposes only.

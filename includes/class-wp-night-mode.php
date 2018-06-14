@@ -67,8 +67,8 @@ class Wp_Night_Mode {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'Wp_Night_Mode' ) ) {
+			$this->version = Wp_Night_Mode;
 		} else {
 			$this->version = '1.0.0';
 		}
@@ -155,8 +155,8 @@ class Wp_Night_Mode {
 
 		$plugin_admin = new Wp_Night_Mode_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wp_night_mode_enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'wp_night_mode_enqueue_scripts' );
 		$this->loader->add_action( 'customize_register', $plugin_admin, 'wp_night_mode_customize_register' );
 		$this->loader->add_shortcode( 'wp-night-mode-button', $plugin_admin, 'wp_night_mode_shortcode' );
 
@@ -173,8 +173,8 @@ class Wp_Night_Mode {
 
 		$plugin_public = new Wp_Night_Mode_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'wp_night_mode_enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'wp_night_mode_enqueue_scripts' );
 		$this->loader->add_action( 'body_class', $plugin_public, 'wp_night_mode_body_classes' );
 		$this->loader->add_action( 'wp_head', $plugin_public, 'wp_night_mode_customizer_css' );
 

@@ -59,7 +59,7 @@ class Wp_Night_Mode_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function wp_night_mode_enqueue_styles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -82,7 +82,7 @@ class Wp_Night_Mode_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function wp_night_mode_enqueue_scripts() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -97,13 +97,6 @@ class Wp_Night_Mode_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-night-mode-admin.js', array( 'jquery' ), $this->version, false );
-
-		wp_localize_script( $this->plugin_name, 'ajax_login_object', array(
-			'ajaxurl'          => admin_url( 'admin-ajax.php' ),
-			'logouturl'        => wp_logout_url( home_url() ),
-			'redirecturl'      => esc_url( home_url() ),
-			'success_register' => esc_html__( 'User created. Activate via email', 'wp-night-mode' ),
-		));
 
 	}
 

@@ -1,7 +1,7 @@
 (function( $ ) {
 	'use strict';
 // Variables
-	const cookies = {
+	const wnmCookies = {
 		setCookie(key, value, time, path) {
 			const expires = new Date();
 			expires.setTime(expires.getTime() + (time));
@@ -30,7 +30,7 @@
 		let buttonHtml = '';
 		let buttonClass = document.querySelectorAll('.wp-night-mode');
 
-		if ('true' === cookies.getCookie( 'wpNightMode' )) {
+		if ('true' === wnmCookies.getCookie( 'wpNightMode' )) {
 			buttonHtml = '<div class="wp-night-mode-button active"><div class="wp-night-mode-slider round"></div></div>';
 		} else {
 			buttonHtml = '<div class="wp-night-mode-button"><div class="wp-night-mode-slider round"></div></div>';
@@ -56,10 +56,10 @@
 
 		    	if (this.classList.contains('active')) {
 		    		console.log('aktivno');
-		            cookies.setCookie( 'wpNightMode', 'true', 2628000000, '/' );
+		            wnmCookies.setCookie( 'wpNightMode', 'true', 2628000000, '/' );
 		        } else {
 		    		console.log('nije aktivno');
-		            cookies.setCookie( 'wpNightMode', 'false', 2628000000, '/' );
+		            wnmCookies.setCookie( 'wpNightMode', 'false', 2628000000, '/' );
 		        }
 			};
 		}

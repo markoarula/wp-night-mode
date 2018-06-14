@@ -1,16 +1,39 @@
-# Dark Mode
+# WP Simple Ajax Login and Register
 
-Allow users to change the website style while reading at night, enabling them to easily read and spend more time on your site.
+Contributors: Marko Arula (markoarula)
+
+Requires at least: 3.9
+
+Tested up to: 4.7
+
+Stable tag: 1.3.0
+
+License: GPLv2 or later
+
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+======
+
+This is all GPL, so you're free to use it, but if you use it in your theme or plugin, don't forget to attribute where you've got this from :)
+
+======
 
 ## Description
 
-With this plugin you can enable your users to switch website between Night Mode and normal style smoothly to improve the readability of text, images and videos.
+This is a simple wordpress plugin for registration and logging via modal windows. You can use it, test it, expand it etc. What ever works for you.
 
-Reading website content at night time can be difficult. Help your visitors read more articles, spend more time on your website and protect their eyes from being hurt.
+## How to use
 
-## Installation & Setup
+You can download this repo and then just install plugin to your theme.
 
-1. Upload `wp-night-mode` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Use `wp-night-mode` class on any element (for example Menu item) or `[wp-night-mode-button]` shortcode to show Night Mode toggle button
-4. Go to Customizer and set styles for Night Mode
+After that, it's pretty easy to use it:
+
+* To call login modal, use the `mytheme_show_login` class on any link, button or menu item
+* To call register modal, use the `mytheme_register` class on any link, button or menu item
+* To logout, use the `mytheme_logout` class on any link, button or menu item
+
+## Changelog
+
+### Ver 1.0
+
+* Initial release
