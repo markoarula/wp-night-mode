@@ -96,7 +96,20 @@ class Wp_Night_Mode_Public {
 		 * class.
 		 */
 
+        $plugin_admin = new Wp_Night_Mode_Admin( $this->plugin_name, $this->version );
+        $button_html = $plugin_admin->wp_night_mode_shortcode( '' );
+
+        // print_r('time()');
+        // print_r(time());
+
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wp-night-mode-public.js', array( 'jquery' ), $this->version, false );
+
+		wp_localize_script( $this->plugin_name, 'wpnmObject', array(
+            'button_html' => $button_html,
+            'server_time' => time(),
+            'turn_on_time' => strtotime( get_theme_mod('wp_night_mode_turn_on_time') ),
+            'turn_off_time' => strtotime( get_theme_mod('wp_night_mode_turn_off_time') ),
+        ) );
 
 	}
 

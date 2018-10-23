@@ -21,7 +21,9 @@ Reading website content at night time can be difficult. Help your visitors read 
 1. Upload `wp-night-mode` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Use `wp-night-mode` class on any element (for example Menu item) or `[wp-night-mode-button]` shortcode to show Night Mode toggle button
-4. Go to Customizer and set styles for Night Mode
+4. Shortcode options:
+	- "style" option, for Toggle Style. Use it like this: `[wp-night-mode-button style="4"]`
+5. Go to Customizer and set styles for Night Mode
 
 == Screenshots ==
 

@@ -22,20 +22,37 @@
 
 	// Call Functions
 	window.onload = function () {
+		// wp_night_mode_turn_on_time();
 		wp_night_mode_element_to_button();
 		wp_night_mode_button_click();
 	};
 
 	// Functions
+	function wp_night_mode_turn_on_time() {
+		var server_time = wpnmObject.server_time;
+		var turn_on_time = wpnmObject.turn_on_time;
+		var turn_off_time = wpnmObject.turn_off_time;
+		// var h = new Date().getHours();
+		// var m = new Date().getMinutes();
+		// var time = h + ':' + m;
+		// console.log(wpnmObject);
+		// console.log(server_time);
+
+		// turn on
+		if ( server_time >= turn_on_time && server_time <= turn_off_time ) {
+			wnmCookies.setCookie('wpNightMode', 'true', 2628000000, '/');
+		}
+		// turn off
+		// if ( server_time >= turn_off_time && server_time <= turn_on_time ) {
+		// 	wnmCookies.setCookie('wpNightMode', 'false', 2628000000, '/');
+		// }
+	}
+
 	function wp_night_mode_element_to_button() {
 		var buttonHtml = '';
 		var buttonClass = document.querySelectorAll('.wp-night-mode');
 
-		if ('true' === wnmCookies.getCookie('wpNightMode')) {
-			buttonHtml = '<div class="wp-night-mode-button active"><div class="wp-night-mode-slider round"></div></div>';
-		} else {
-			buttonHtml = '<div class="wp-night-mode-button"><div class="wp-night-mode-slider round"></div></div>';
-		}
+		buttonHtml = wpnmObject.button_html;
 
 		for (var i = 0; i < buttonClass.length; i++) {
 			buttonClass[i].innerHTML = buttonHtml;
@@ -43,7 +60,7 @@
 	}
 
 	function wp_night_mode_button_click() {
-		var nightModeButton = document.querySelectorAll('.wp-night-mode-button');
+		var nightModeButton = document.querySelectorAll('.wpnm-button');
 
 		for (var i = 0; i < nightModeButton.length; i++) {
 			nightModeButton.item(i).onclick = function (event) {
