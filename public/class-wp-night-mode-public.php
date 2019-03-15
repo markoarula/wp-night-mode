@@ -122,7 +122,7 @@ class Wp_Night_Mode_Public {
 
 		$wp_night_mode = isset( $_COOKIE['wpNightMode'] ) ? $_COOKIE['wpNightMode'] : '';
 
-	    if ( 'true' == $wp_night_mode ) {
+	    if ( 'true' === $wp_night_mode ) {
 	        $classes[] = 'wp-night-mode-on';
 	    }
 

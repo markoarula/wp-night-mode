@@ -34,3 +34,9 @@ After that, it's pretty easy to use it:
 ### Ver 1.0.3
 
 * Fixed small CSS error
+
+### Ver 1.0.4
+
+* Tested on WordPress 5.1.1
+* Tested with Gutenberg
+* Fixed cache issue and tested with plugins: Comet Cache, WP Rocket and Autoptimize

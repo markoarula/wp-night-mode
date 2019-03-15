@@ -25,6 +25,7 @@
 		// wp_night_mode_turn_on_time();
 		wp_night_mode_element_to_button();
 		wp_night_mode_button_click();
+		wp_night_mode_load_cookie();
 	};
 
 	// Functions
@@ -76,6 +77,22 @@
 					wnmCookies.setCookie('wpNightMode', 'false', 2628000000, '/');
 				}
 			};
+		}
+	}
+
+	function wp_night_mode_load_cookie() {
+		var nightModeButton = document.querySelectorAll('.wpnm-button');
+
+		if ('true' === wnmCookies.getCookie('wpNightMode')) {
+			document.body.classList.add('wp-night-mode-on');
+			for (var i = 0; i < nightModeButton.length; i++) {
+				nightModeButton[i].classList.add('active');
+			}
+		} else {
+			document.body.classList.remove('wp-night-mode-on');
+			for (var i = 0; i < nightModeButton.length; i++) {
+				nightModeButton[i].classList.remove('active');
+			}
 		}
 	}
 })(jQuery);
