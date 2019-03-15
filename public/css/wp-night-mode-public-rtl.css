@@ -1,0 +1,449 @@
+/**
+ * RTL Support
+ */
+
+/*Button style 1*/
+    .wpnm-button.style-1 {
+        position: relative;
+        display: block;
+        width: 40px;
+        height: 21px;
+        margin-bottom: 0;
+        top: 2px;
+    }
+    .wpnm-button.style-1 .wpnm-slider.round {
+        border-radius: 34px;
+    }
+    .wpnm-button.style-1 .wpnm-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    .wpnm-button.style-1 .wpnm-slider:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        right: 4px;
+        bottom: 3px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+    .wpnm-button.style-1 .wpnm-slider.round:before {
+        border-radius: 50%;
+    }
+
+    /*Active*/
+    .wpnm-button.style-1.active .wpnm-slider {
+        background-color: #2196F3;
+    }
+    .wpnm-button.style-1.active .wpnm-slider:before {
+        -webkit-transform: translateX(-16px);
+        -ms-transform: translateX(-16px);
+        transform: translateX(-16px);
+    }
+
+/*Button style 2*/
+    .wpnm-button-inner-left:empty {
+        margin-right: -10px;
+    }
+    .wpnm-button-inner-left:before,
+    .wpnm-button-inner-left:after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        /*transition*/
+        -webkit-transition: 0.4s ease-in-out;
+        -moz-transition: 0.4s ease-in-out;
+        -o-transition: 0.4s ease-in-out;
+        transition: 0.4s ease-in-out;
+        outline: none;
+    }
+    .wpnm-button.style-2 .wpnm-button-inner,
+    .wpnm-button.style-2 .wpnm-button-inner-left {
+        display: inline-block;
+        position: relative;
+        padding: 0px;
+        font-size: 14px;
+        line-height: 16px;
+        cursor: pointer;
+        color: rgba(149, 149, 149, 0.51);
+        font-weight: normal;
+    }
+    .wpnm-button.style-2 .wpnm-button-inner-left:before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        line-height: 34px;
+        text-indent: 40px;
+        height: 16px;
+        width: 16px;
+        margin: 4px;
+        /*border-radius*/
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        border-radius: 100%;
+        left: 26px;
+        bottom: 0px;
+        background: #FFB200;
+        transform: rotate(45deg);
+        box-shadow: 0 0 10px white;
+    }
+    .wpnm-button.style-2 .wpnm-button-inner-left:after {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 24px;
+        /*border-radius*/
+        -webkit-border-radius: 16px;
+        -moz-border-radius: 16px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.15);
+        vertical-align: middle;
+        margin: 0 10px;
+        border: 2px solid #FFB200;
+    }
+    .wpnm-button.style-2.active .wpnm-button-inner-left:before {
+        left: 17px;
+        box-shadow: -5px 5px 0 0 #eee;
+        background: transparent;
+    }
+    .wpnm-button.style-2.active .wpnm-button-inner-left:after {
+        background: rgba(0, 0, 0, 0.15);
+        border: 2px solid white;
+    }
+    .wpnm-button.style-2 .wpnm-button-inner-left {
+        color: rgba(250, 250, 250, 0.51);
+        font-weight: bold;
+    }
+    .wpnm-button.style-2.active .wpnm-button-inner-left {
+        color: rgba(149, 149, 149, 0.51);
+        font-weight: normal;
+    }
+    .wpnm-button.style-2.active .wpnm-button-inner-left + .wpnm-button-inner {
+        color: rgba(250, 250, 250, 0.51);
+        font-weight: bold;
+    }
+
+/*Button style 3*/
+    /*BASED ON Ramakrishna V's Day-Night Toggle Button, https://dribbble.com/shots/1907553-Day-Night-Toggle-Button*/
+    .wpnm-button.style-3 {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
+        font-size: 3px;
+        width: 14em;
+        height: 8em;
+        background-color: #BFE6F7;
+        border-width: 0.5em;
+        border-style: solid;
+        border-color: #80C1D7;
+        border-radius: 4em;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+    .wpnm-button.style-3 .wpnm-button-circle {
+        position: absolute;
+        z-index: 20;
+        top: 0.5em;
+        left: 0.5em;
+        border-width: 0.5em;
+        width: 6em;
+        height: 6em;
+        background-color: #F5ED28;
+        border: 0.5em solid #E6C542;
+        border-radius: 3em;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud {
+        position: absolute;
+        top: 3em;
+        right: 3em;
+        width: 6em;
+        height: 6em;
+        transition: all 0.3s ease-in-out;
+        -webkit-animation: cloud 12s linear infinite;
+        -moz-animation: cloud 12s linear infinite;
+        -o-animation: cloud 12s linear infinite;
+        animation: cloud 12s linear infinite;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div,
+    .wpnm-button.style-3 .wpnm-button-cloud div:before,
+    .wpnm-button.style-3 .wpnm-button-cloud div:after {
+        position: absolute;
+        display: block;
+        z-index: 40;
+        width: 4em;
+        height: 2em;
+        background-color: #F5F6F8;
+        border-radius: 1em;
+        content: "";
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div:before {
+        bottom: 1em;
+        right: 0.5em;
+        width: 2em;
+        height: 2em;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div:after {
+        bottom: 1em;
+        right: 2em;
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 0.75em;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div + div {
+        top: -0.5em;
+        right: -0.5em;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div + div,
+    .wpnm-button.style-3 .wpnm-button-cloud div + div:before,
+    .wpnm-button.style-3 .wpnm-button-cloud div + div:after {
+        z-index: 30;
+        width: 5em;
+        height: 3em;
+        background-color: #D2D4D3;
+        border-radius: 1.5em;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div + div:before {
+        bottom: 1em;
+        right: 0.5em;
+        width: 3em;
+        height: 3em;
+    }
+    .wpnm-button.style-3 .wpnm-button-cloud div + div:after {
+        bottom: 1em;
+        right: 2em;
+        width: 2.5em;
+        height: 2.5em;
+        border-radius: 1.25em;
+    }
+    .wpnm-button.style-3.active {
+        background-color: #484848;
+        /*background-color: transparent;*/
+        border-color: #202020;
+    }
+    .wpnm-button.style-3.active .wpnm-button-circle {
+        left: 6.5em;
+        background-color: #FFFDF1;
+        border-color: #E1E5C4;
+    }
+    .wpnm-button.style-3.active .wpnm-button-moon-spots {
+        width: 2em;
+        height: 2em;
+    }
+    .wpnm-button.style-3.active .wpnm-button-moon-spots,
+    .wpnm-button.style-3.active .wpnm-button-moon-spots:before,
+    .wpnm-button.style-3.active .wpnm-button-moon-spots:after {
+        border-width: 0.5em;
+    }
+    .wpnm-button.style-3.active .wpnm-button-moon-spots:before {
+        height: 0.5em;
+        width: 0.5em;
+        border-radius: 1em;
+    }
+    .wpnm-button.style-3.active .wpnm-button-moon-spots:after {
+        height: 0.33333333em;
+        width: 0.33333333em;
+        border-radius: 0.66666667em;
+    }
+    .wpnm-button.style-3.active .wpnm-button-cloud {
+        opacity: 0;
+    }
+    .wpnm-button.style-3.active .wpnm-button-stars {
+        opacity: 1;
+        background-color: #484848;
+    }
+    .wpnm-button-moon-spots {
+        top: 0.35714286em;
+        left: 0.35714286em;
+        z-index: 10;
+    }
+    .wpnm-button-moon-spots,
+    .wpnm-button-moon-spots:before,
+    .wpnm-button-moon-spots:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        background-color: #EFEED9 !important;
+        border: 0 solid #E1E5C4;
+        border-color: #E1E5C4;
+        border-radius: 50%;
+        content: "";
+        transition: all 0.3s ease-in-out;
+    }
+    .wpnm-button-moon-spots:before {
+        left: 3em;
+    }
+    .wpnm-button-moon-spots:after {
+        left: 0.5em;
+        bottom: -3em;
+    }
+    .wpnm-button-stars {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6.5em;
+        height: 7em;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .wpnm-button-stars div {
+        bottom: 1em;
+        right: 0;
+        width: 0.65em;
+        height: 0.65em;
+    }
+    .wpnm-button-stars div,
+    .wpnm-button-stars div:before,
+    .wpnm-button-stars div:after {
+        position: absolute;
+        display: block;
+        background-color: #FEFEFE !important;
+        border-radius: 50%;
+        content: "";
+    }
+    .wpnm-button-stars div:before {
+        bottom: 3.5em;
+        right: 1.5em;
+        width: 0.3125em;
+        height: 0.3125em;
+    }
+    .wpnm-button-stars div:after {
+        bottom: 5em;
+        right: -0.5em;
+        width: 0.5em;
+        height: 0.5em;
+    }
+    .wpnm-button-stars div + div {
+        top: 3em;
+        right: 5em;
+        left: 0;
+    }
+    .wpnm-button-stars div + div:before {
+        bottom: -1em;
+        right: -2em;
+    }
+    .wpnm-button-stars div + div:after {
+        bottom: -2em;
+        right: -0.25em;
+    }
+
+/*Button style 4*/
+    .wpnm-button.style-4 {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 44px;
+        height: 24px;
+        border: 2px solid rgba(204, 204, 204, 0.4);
+        background: rgba(252, 250, 250, 0.05);
+        padding: 4px;
+        position: relative;
+        border-radius: 40px;
+        cursor: pointer;
+    }
+
+    .wpnm-button.style-4 .wpnm-button-inner {
+        height: 18px;
+        width: 18px;
+        background: yellow;
+        border-radius: 40px;
+        position: absolute;
+        pointer-events: none;
+        top: 2px;
+        right: 2px;
+        transition: right 0.5s ease, box-shadow 0.5s ease, border 0.5s ease, top 0.5s ease;
+        background: #EDDDD4;
+        background: linear-gradient(-135deg, #edddd4 0%, #fcfafa 50%, #edddd4 51%, #fcfafa 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=1 );
+        box-shadow: 0 0 5px 1px #EDDDD4;
+        border: 5px solid rgba(237, 221, 212, 0.5);
+    }
+    .wpnm-button.style-4 .wpnm-button-inner::before {
+        content: '';
+        height: 19.8px;
+        width: 19.8px;
+        background: red;
+        top: -1px;
+        right: -1px;
+        position: absolute;
+        border-radius: 40px;
+        background: #FFFFFF;
+        background: radial-gradient(ellipse at center, white 0%, #ffbe0b 50%, #fb5607 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefcea', endColorstr='#f1da36',GradientType=1 );
+        transition: opacity 0.5s ease;
+        opacity: 0;
+    }
+
+    /*Active*/
+    .wpnm-button.style-4.active {
+        border: 1px solid rgba(255, 255, 255, 0.525);
+    }
+    .wpnm-button.style-4.active .wpnm-button-inner {
+        right: 22px;
+        box-shadow: 0 0 2px 2px #FB5607;
+        border: 1px solid #fb5607;
+    }
+
+/*Button style 5*/
+    .wpnm-button.style-5 {
+        cursor: default;
+        font-size: 14px;
+    }
+    .wpnm-button.style-5 #dayIcon,
+    .wpnm-button.style-5 #nightIcon {
+        position: relative;
+        width: 1.75em;
+        height: 1.75em;
+        top: -3px;
+        fill: #9caec0;
+    }
+    .wpnm-button.style-5 .wpnm-button-sun,
+    .wpnm-button.style-5 .wpnm-button-moon {
+        display: inline-block;
+    }
+    .wpnm-button.style-5 .wpnm-button-toggle {
+        outline: 0;
+        display: inline-block;
+        width: 4em;
+        height: 2em;
+        position: relative;
+        margin: 0 7px;
+        padding: 2px;
+        border: 2px solid rgba(156, 174, 192, 0.27);
+        border-radius: 2em;
+        cursor: pointer;
+    }
+    .wpnm-button.style-5 .wpnm-button-toggle:after {
+        content: "";
+        display: block;
+        position: relative;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        background: rgba(156, 174, 192, 0.27);
+        border-radius: 1em;
+        -webkit-transition: all .4s ease;
+        transition: all .4s ease;
+    }
+
+    /*Active*/
+    .wpnm-button.style-5.active .wpnm-button-toggle:after {
+        right: 50%;
+    }
+
+/*Animations*/
+    @-webkit-keyframes cloud{ 0%{right: -8em;} 100%{right: 16em;}}
+    @-moz-keyframes cloud{ 0%{right: -8em;} 100%{right: 16em;}}
+    @-o-keyframes cloud{ 0%{right: -8em;} 100%{right: 16em;}}
+    @keyframes cloud{ 0%{right: -8em;} 100%{right: 16em;}}
