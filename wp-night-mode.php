@@ -16,7 +16,7 @@
  * Plugin Name:       WP Night Mode
  * Plugin URI:        https://github.com/markoarula/wp-night-mode
  * Description:       Allow users to change the website style while reading at night, enabling them to easily read and spend more time on your site.
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            Marko Arula
  * Author URI:        https://github.com/markoarula
  * License:           GPL-2.0+
