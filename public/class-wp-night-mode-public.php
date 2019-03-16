@@ -73,7 +73,11 @@ class Wp_Night_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-night-mode-public.css', array(), $this->version, 'all' );
+		if ( is_rtl() ) {
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-night-mode-public-rtl.css', array(), $this->version, 'all' );
+		} else {
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wp-night-mode-public.css', array(), $this->version, 'all' );
+		}
 
 	}
 

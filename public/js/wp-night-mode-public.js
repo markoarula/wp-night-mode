@@ -21,12 +21,12 @@
 	};
 
 	// Call Functions
-	window.onload = function () {
+	document.addEventListener("DOMContentLoaded", function(event) {
 		// wp_night_mode_turn_on_time();
 		wp_night_mode_element_to_button();
 		wp_night_mode_button_click();
 		wp_night_mode_load_cookie();
-	};
+	});
 
 	// Functions
 	function wp_night_mode_turn_on_time() {
