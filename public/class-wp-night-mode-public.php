@@ -102,6 +102,7 @@ class Wp_Night_Mode_Public {
 
         $plugin_admin = new Wp_Night_Mode_Admin( $this->plugin_name, $this->version );
         $button_html = $plugin_admin->wp_night_mode_shortcode( '' );
+        $wp_night_mode_default = get_theme_mod( 'wp_night_mode_default' );
 
         // print_r('time()');
         // print_r(time());
@@ -110,6 +111,7 @@ class Wp_Night_Mode_Public {
 
 		wp_localize_script( $this->plugin_name, 'wpnmObject', array(
             'button_html' => $button_html,
+            'default' => $wp_night_mode_default,
             'server_time' => time(),
             'turn_on_time' => strtotime( get_theme_mod('wp_night_mode_turn_on_time') ),
             'turn_off_time' => strtotime( get_theme_mod('wp_night_mode_turn_off_time') ),
@@ -141,53 +143,63 @@ class Wp_Night_Mode_Public {
 	 */
 	public function wp_night_mode_customizer_css() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Night_Mode_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Night_Mode_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		$wp_night_mode_toggle_size = get_theme_mod('wp_night_mode_toggle_size', '');
+		$toggle_size_css = '';
+		if ('' !== $wp_night_mode_toggle_size && '14' !== $wp_night_mode_toggle_size) {
+			$toggle_size_css = '
+				.wpnm-button.style-1,
+				.wpnm-button.style-2,
+				.wpnm-button.style-3,
+				.wpnm-button.style-4,
+				.wpnm-button.style-5 {
+					font-size: ' . $wp_night_mode_toggle_size . 'px;
+				}
+			';
+		}
+
+		$output_css =
+		' ' . $toggle_size_css . '
+			.wp-night-mode-slider {
+				background-color: ' . get_theme_mod('wp_night_mode_toggle_off_color', '') . ';
+			}
+
+			.wp-night-mode-button.active .wp-night-mode-slider {
+				background-color: ' . get_theme_mod('wp_night_mode_toggle_on_color', '') . ';
+			}
+
+			body.wp-night-mode-on * {
+				background: ' . get_theme_mod('wp_night_mode_body_background', '') . ';
+			}
+
+			body.wp-night-mode-on .customize-partial-edit-shortcut button,
+			body.wp-night-mode-on .customize-partial-edit-shortcut button svg,
+			body.wp-night-mode-on #adminbarsearch,
+			body.wp-night-mode-on span.display-name,
+			body.wp-night-mode-on span.ab-icon,
+			body.wp-night-mode-on span.ab-label {
+			    background: transparent;
+			}
+
+			body.wp-night-mode-on * {
+				color: ' . get_theme_mod('wp_night_mode_text_color', '') . ';
+			}
+
+			body.wp-night-mode-on a {
+				color: ' . get_theme_mod('wp_night_mode_link_color', '') . ';
+			}
+
+			body.wp-night-mode-on a:hover,
+			body.wp-night-mode-on a:visited,
+			body.wp-night-mode-on a:active {
+				color: ' . get_theme_mod('wp_night_mode_link_hover_color', '') . ';
+			}
+		}';
 
 		?>
 			<style type="text/css">
-				.wp-night-mode-slider {
-					background-color: <?php echo get_theme_mod('wp_night_mode_toggle_off_color', ''); ?>;
-				}
-
-				.wp-night-mode-button.active .wp-night-mode-slider {
-					background-color: <?php echo get_theme_mod('wp_night_mode_toggle_on_color', ''); ?>;
-				}
-
-				body.wp-night-mode-on * {
-					background: <?php echo get_theme_mod('wp_night_mode_body_background', ''); ?>;
-				}
-
-				body.wp-night-mode-on .customize-partial-edit-shortcut button,
-				body.wp-night-mode-on .customize-partial-edit-shortcut button svg,
-				body.wp-night-mode-on #adminbarsearch,
-				body.wp-night-mode-on span.display-name,
-				body.wp-night-mode-on span.ab-icon,
-				body.wp-night-mode-on span.ab-label {
-				    background: transparent;
-				}
-
-				body.wp-night-mode-on * {
-					color: <?php echo get_theme_mod('wp_night_mode_text_color', ''); ?>;
-				}
-
-				body.wp-night-mode-on a {
-					color: <?php echo get_theme_mod('wp_night_mode_link_color', ''); ?>;
-				}
-
-				body.wp-night-mode-on a:hover,
-				body.wp-night-mode-on a:visited,
-				body.wp-night-mode-on a:active {
-					color: <?php echo get_theme_mod('wp_night_mode_link_hover_color', ''); ?>;
+				<?php echo $output_css; ?>
+				@media (prefers-color-scheme: dark) {
+					<?php echo $output_css; ?>
 				}
 			</style>
 		<?php

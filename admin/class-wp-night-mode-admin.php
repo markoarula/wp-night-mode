@@ -211,6 +211,23 @@ class Wp_Night_Mode_Admin {
         ));
 
         //  =============================
+        //  Night Mode as Default
+        //  =============================
+        $wp_customize->add_setting('wp_night_mode_default', array(
+            'default'           => '',
+            'capability'        => 'edit_theme_options',
+            'transport'         => 'refresh',
+
+        ));
+
+        $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'wp_night_mode_default', array(
+            'label'    => __('Night Mode as Default', 'wp-night-mode'),
+            'section'  => 'wp_night_mode_settings',
+            'settings' => 'wp_night_mode_default',
+            'type'     => 'checkbox',
+        )));
+
+        //  =============================
         //  Automatic Switching
         //  =============================
         // $wp_customize->add_setting('wp_night_mode_automatic_switching', array(
@@ -290,6 +307,29 @@ class Wp_Night_Mode_Admin {
                 '4'  => 'Style 4',
 				'5'  => 'Style 5',
 			),
+        )));
+
+        //  =============================
+        //  Toggle Size
+        //  =============================
+        $wp_customize->add_setting('wp_night_mode_toggle_size', array(
+            'default'           => '14',
+            'sanitize_callback' => 'absint',
+            'capability'        => 'edit_theme_options',
+            'transport'         => 'refresh',
+
+        ));
+
+        $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'wp_night_mode_toggle_size', array(
+            'label'         => __('Toggle Size', 'wp-night-mode'),
+            'section'       => 'wp_night_mode_settings',
+            'settings'      => 'wp_night_mode_toggle_size',
+            'type'          => 'range',
+            'input_attrs' => array(
+                'min' => 0,
+                'max' => 40,
+                'step' => 1,
+            ),
         )));
 
         //  =============================

@@ -40,3 +40,10 @@ After that, it's pretty easy to use it:
 * Tested on WordPress 5.1.1
 * Tested with Gutenberg
 * Fixed cache issue and tested with plugins: Comet Cache, WP Rocket and Autoptimize
+
+### Ver 1.0.5
+
+* Tested on WordPress 5.2.2
+* Added "Night Mode as Default" option (on first website visit user will see Night Mode and can switch to Light Mode)
+* Added `prefers-color-scheme` media query (media query to detect if the user has set their system to use a light or dark color theme)
+* Added "Toggle Size" option (easily change the size of the toggle button)

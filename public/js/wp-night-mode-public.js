@@ -23,10 +23,17 @@
 	// Call Functions
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// wp_night_mode_turn_on_time();
+		wp_night_mode_default();
 		wp_night_mode_element_to_button();
 		wp_night_mode_button_click();
 		wp_night_mode_load_cookie();
 	});
+
+	function wp_night_mode_default() {
+		if ('1' === wpnmObject.default && null === wnmCookies.getCookie('wpNightMode')) {
+			wnmCookies.setCookie('wpNightMode', 'true', 2628000000, '/');
+		}
+	}
 
 	// Functions
 	function wp_night_mode_turn_on_time() {
