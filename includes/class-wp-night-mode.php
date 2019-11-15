@@ -176,7 +176,8 @@ class Wp_Night_Mode {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'wp_night_mode_enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'wp_night_mode_enqueue_scripts' );
 		$this->loader->add_action( 'body_class', $plugin_public, 'wp_night_mode_body_classes' );
-		$this->loader->add_action( 'wp_head', $plugin_public, 'wp_night_mode_customizer_css' );
+    $this->loader->add_action( 'wp_head', $plugin_public, 'wp_night_mode_customizer_css' );
+    $this->loader->add_filter( 'wp_nav_menu_items', $plugin_public, 'wp_night_mode_add_menu_item', 10, 2 );
 
 	}
 

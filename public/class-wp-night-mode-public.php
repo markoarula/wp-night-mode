@@ -134,7 +134,28 @@ class Wp_Night_Mode_Public {
 
 	    return $classes;
 
-	}
+  }
+
+  /**
+  * Add a toggle to specific menu
+  *
+  * @since    1.0.0
+  */
+  public function wp_night_mode_add_menu_item($items, $args){
+    //$wp_night_mode = isset( $_COOKIE['wpNightMode'] ) ? $_COOKIE['wpNightMode'] : '';
+    $selected_menu = get_theme_mod( 'wp_night_mode_toggle_menu' );
+    // Get object id by location
+    $selected_menu = wp_get_nav_menu_object( $selected_menu );
+    if($selected_menu) {
+      $menu_slug          = $args->menu->slug;
+      $selected_menu_slug = $selected_menu->slug;
+      if( $menu_slug == $selected_menu_slug ){
+          $button_style = get_theme_mod( 'wp_night_mode_toggle_style' );
+          $items = $items . '<li class="wp-night-mode"><a href="" class="wpnm-button style-'. $button_style .'">Night mode</a></li>';
+      }
+    return $items;
+    }
+  }
 
 	/**
 	 * Customizer CSS.
