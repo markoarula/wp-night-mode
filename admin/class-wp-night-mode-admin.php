@@ -184,6 +184,31 @@ class Wp_Night_Mode_Admin {
 
 	}
 
+  /**
+   * Get all created menu
+   *
+   * @since    1.0.0
+   * @param    boolean  $remove_first Removes first item, default = false.
+   */
+
+   public function wp_night_mod_get_menus($remove_first = false) {
+
+    $menus_dropdown = array();
+    $menus = wp_get_nav_menus();
+    foreach($menus as $key=>$menu) {
+      if($key === 0){
+        $menus_dropdown['first_item'] = $menu->term_id;
+      }
+      $name = $menu->name;
+      $id = $menu->term_id;
+      $menus_dropdown[$id] = $name;
+    }
+    if($remove_first){
+      unset($menus_dropdown['first_item']);
+
+    }
+      return $menus_dropdown;
+   }
 
 	/**
 	 * Register Customizer.
@@ -307,6 +332,26 @@ class Wp_Night_Mode_Admin {
                 '4'  => 'Style 4',
 				'5'  => 'Style 5',
 			),
+        )));
+
+        //  =============================
+        //  Toggle Menus
+        //  =============================
+        $wp_customize->add_setting('wp_night_mode_toggle_menu', array(
+            'default'           => '',
+            // 'sanitize_callback' => 'sanitize_hex_color',
+            'capability'        => 'edit_theme_options',
+            'transport'   		=> 'refresh',
+
+        ));
+
+        $wp_customize->add_control( new WP_Customize_Control($wp_customize, 'wp_night_mode_toggle_menu', array(
+            'label'    => __('Toggle Menu', 'wp-night-mode'),
+            'section'  => 'wp_night_mode_settings',
+            'settings' => 'wp_night_mode_toggle_menu',
+            'default'  => $this->wp_night_mod_get_menus()['first_item'],
+            'type'     => 'select',
+			      'choices'  => $this->wp_night_mod_get_menus(true),
         )));
 
         //  =============================
