@@ -24,6 +24,7 @@
 	document.addEventListener("DOMContentLoaded", function(event) {
 		// wp_night_mode_turn_on_time();
 		wp_night_mode_default();
+		wp_night_mode_browser_preference();
 		wp_night_mode_element_to_button();
 		wp_night_mode_button_click();
 		wp_night_mode_load_cookie();
@@ -31,7 +32,23 @@
 
 	function wp_night_mode_default() {
 		if ('1' === wpnmObject.default && null === wnmCookies.getCookie('wpNightMode')) {
-			wnmCookies.setCookie('wpNightMode', 'true', 2628000000, '/');
+			wp_set_night_mode(true);
+		}
+	}
+	
+	function wp_night_mode_browser_preference() {
+		if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
+			//Browser supports prefers-color-scheme
+			
+			//Adapt to preferred color scheme
+			if (null === wnmCookies.getCookie('wpNightMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+				wp_set_night_mode(true);
+			
+			//Set up listener
+			window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
+				if (null === wnmCookies.getCookie('wpNightMode')) //no manual preference set -> adapt to browser preference
+					wp_set_night_mode(e.matches);
+			});
 		}
 	}
 
@@ -48,7 +65,7 @@
 
 		// turn on
 		if ( server_time >= turn_on_time && server_time <= turn_off_time ) {
-			wnmCookies.setCookie('wpNightMode', 'true', 2628000000, '/');
+			wp_set_night_mode(true);
 		}
 		// turn off
 		// if ( server_time >= turn_off_time && server_time <= turn_on_time ) {
@@ -86,11 +103,11 @@
 			};
 		}
 	}
-
-	function wp_night_mode_load_cookie() {
+	
+	function wp_set_night_mode(nightMode) {
 		var nightModeButton = document.querySelectorAll('.wpnm-button');
 
-		if ('true' === wnmCookies.getCookie('wpNightMode')) {
+		if (nightMode) {
 			document.body.classList.add('wp-night-mode-on');
 			for (var i = 0; i < nightModeButton.length; i++) {
 				nightModeButton[i].classList.add('active');
@@ -101,5 +118,10 @@
 				nightModeButton[i].classList.remove('active');
 			}
 		}
+	}
+
+	function wp_night_mode_load_cookie() {
+		if (null !== wnmCookies.getCookie('wpNightMode'))
+			wp_set_night_mode('true' === wnmCookies.getCookie('wpNightMode'));
 	}
 })(jQuery);
