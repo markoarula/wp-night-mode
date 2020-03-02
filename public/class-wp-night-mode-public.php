@@ -198,9 +198,6 @@ class Wp_Night_Mode_Public {
 		?>
 			<style type="text/css">
 				<?php echo $output_css; ?>
-				@media (prefers-color-scheme: dark) {
-					<?php echo $output_css; ?>
-				}
 			</style>
 		<?php
 	}
