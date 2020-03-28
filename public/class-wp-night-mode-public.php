@@ -144,6 +144,11 @@ class Wp_Night_Mode_Public {
 	public function wp_night_mode_customizer_css() {
 
 		$wp_night_mode_toggle_size = get_theme_mod('wp_night_mode_toggle_size', '');
+		$wp_night_mode_text_color = get_theme_mod('wp_night_mode_text_color', '');
+		$wp_night_mode_link_color = get_theme_mod('wp_night_mode_link_color', '');
+		$wp_night_mode_link_hover_color = get_theme_mod('wp_night_mode_link_hover_color', '');
+		$wp_night_mode_body_background = get_theme_mod('wp_night_mode_body_background', '');			
+		
 		$toggle_size_css = '';
 		if ('' !== $wp_night_mode_toggle_size && '14' !== $wp_night_mode_toggle_size) {
 			$toggle_size_css = '
@@ -156,6 +161,44 @@ class Wp_Night_Mode_Public {
 				}
 			';
 		}
+				
+		$body_background_css = '';
+		if ('' !== $wp_night_mode_body_background) {
+			$body_background_css = '
+				body.wp-night-mode-on * {
+					background: ' . $wp_night_mode_body_background . ';
+				}
+			';
+		}
+		
+		$text_color_css = '';
+		if ('' !== $wp_night_mode_text_color) {
+			$text_color_css = '
+				body.wp-night-mode-on a {
+					color: ' . $wp_night_mode_link_color . ';
+				}
+			';
+		}
+		
+		$link_color_css = '';
+		if ('' !== $wp_night_mode_link_color) {
+			$link_color_css = '
+				body.wp-night-mode-on a {
+					color: ' . $wp_night_mode_link_color . ';
+				}
+			';
+		}
+		
+		$link_hover_color_css = '';
+		if ('' !== $wp_night_mode_link_hover_color) {
+			$link_hover_color_css = '
+				body.wp-night-mode-on a:hover,
+				body.wp-night-mode-on a:visited,
+				body.wp-night-mode-on a:active {
+					color: ' . $wp_night_mode_link_hover_color . ';
+				}
+			';
+		}
 
 		$output_css =
 		' ' . $toggle_size_css . '
@@ -165,34 +208,26 @@ class Wp_Night_Mode_Public {
 
 			.wp-night-mode-button.active .wp-night-mode-slider {
 				background-color: ' . get_theme_mod('wp_night_mode_toggle_on_color', '') . ';
-			}
+			}' .
+			
+			' ' . $body_background_css .			
 
-			body.wp-night-mode-on * {
-				background: ' . get_theme_mod('wp_night_mode_body_background', '') . ';
-			}
-
-			body.wp-night-mode-on .customize-partial-edit-shortcut button,
+			'body.wp-night-mode-on .customize-partial-edit-shortcut button,
 			body.wp-night-mode-on .customize-partial-edit-shortcut button svg,
 			body.wp-night-mode-on #adminbarsearch,
 			body.wp-night-mode-on span.display-name,
 			body.wp-night-mode-on span.ab-icon,
 			body.wp-night-mode-on span.ab-label {
 			    background: transparent;
-			}
+			}' .
 
-			body.wp-night-mode-on * {
-				color: ' . get_theme_mod('wp_night_mode_text_color', '') . ';
-			}
+			' ' . $text_color_css .
 
-			body.wp-night-mode-on a {
-				color: ' . get_theme_mod('wp_night_mode_link_color', '') . ';
-			}
+			' ' . $link_color_css .
+			
+			' ' . $link_hover_color_css .
 
-			body.wp-night-mode-on a:hover,
-			body.wp-night-mode-on a:visited,
-			body.wp-night-mode-on a:active {
-				color: ' . get_theme_mod('wp_night_mode_link_hover_color', '') . ';
-			}
+			'
 		}';
 
 		?>
